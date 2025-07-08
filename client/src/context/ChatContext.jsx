@@ -31,8 +31,6 @@ export const ChatContextProvider = ({ children, user }) => {
   useEffect(() => {
     if (socket === null) return;
 
-    
-
     socket.emit("addNewUser", user?._id);
     socket.on("getOnlineUsers", (res) => {
       setOnlineUsers(res);
@@ -161,6 +159,7 @@ export const ChatContextProvider = ({ children, user }) => {
       }
       setNewMessage(responce);
       setMessages((prev) => [...prev, responce]);
+
       setTextMessage("");
     },
     []

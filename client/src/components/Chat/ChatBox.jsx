@@ -10,7 +10,6 @@ function ChatBox() {
   const { user } = useContext(AuthContext);
   const { currentChat, messages, isMessagesLoading, sendTextMessage } =
     useContext(ChatContext);
-
   const { recipientUser } = useFetchRecipientUser(currentChat, user);
   const [textMessage, setTextMessage] = useState("");
   const scroll = useRef();
@@ -48,7 +47,7 @@ function ChatBox() {
                   ? "message self align-self-end flex-grow-0"
                   : "message self align-self-start flex-grow-0"
               }`}
-              ref = {scroll}
+              ref={scroll}
             >
               <span>{message.text}</span>
               <span>{moment(message.createdAt).calendar()}</span>
@@ -79,4 +78,3 @@ function ChatBox() {
 }
 
 export default ChatBox;
-
