@@ -1,4 +1,4 @@
-const messageModel = require("../models/messageModel");
+import messageModel from "../models/messageModel.js";
 
 const createMessage = async (req, res) => {
   const { chatId, senderId, text } = req.body;
@@ -6,11 +6,10 @@ const createMessage = async (req, res) => {
     chatId,
     senderId,
     text
-  })
+  });
   try {
-    const responce = await message.save();
-    //console.log(responce)
-    res.status(200).json(responce);
+    const response = await message.save();
+    res.status(200).json(response);
   } catch (error) {
     console.log(error);
     res.status(500).json(error);
@@ -18,11 +17,9 @@ const createMessage = async (req, res) => {
 };
 
 const getMessages = async (req, res) => {
-  const chatId = req.params;
-  //console.log(chatId)
+  const { chatId } = req.params;
   try {
-    const messages = await messageModel.find(chatId)
-    //console.log(messages)
+    const messages = await messageModel.find({ chatId });
     res.status(200).json(messages);
   } catch (error) {
     console.log(error);
@@ -30,5 +27,4 @@ const getMessages = async (req, res) => {
   }
 };
 
-
-module.exports = { createMessage ,getMessages };
+export { createMessage, getMessages };

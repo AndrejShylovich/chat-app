@@ -32,7 +32,7 @@ function UserChat(chat) {
     return shortText;
   };
   const checkArray = onlineUsers?.filter(
-    (onlineUser) => onlineUser.userId === recipientUser?._id
+    (onlineUser) => onlineUser === recipientUser?._id
   );
   
   return (

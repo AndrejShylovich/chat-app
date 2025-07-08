@@ -51,6 +51,7 @@ export const AuthContextProvider = ({ children }) => {
     setIsRegisterLoading(true)
     setRegisterError(null)
 
+    console.log(3)
     const responce  = await postRequest(`${baseUrl}/users/register`, JSON.stringify(registerInfo))
     setIsRegisterLoading(false)
 
